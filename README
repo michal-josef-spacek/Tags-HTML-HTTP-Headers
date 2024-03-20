@@ -141,7 +141,8 @@ EXAMPLE
      # </div>
 
 DEPENDENCIES
-    Class::Utils, Error::Pure. List::Util, Readonly, Scalar::Util.
+    Class::Utils, Error::Pure. List::Util, Readonly, Scalar::Util,
+    Tags::HTML.
 
 REPOSITORY
     <https://github.com/michal-josef-spacek/Tags-HTML-HTTP-Headers>
