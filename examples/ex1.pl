@@ -46,7 +46,7 @@ print $tags->flush."\n";
 # }
 # HTML
 # <div class="headers">
-#   <span style="color: charTReuse;">
+#   <span style="color: chartreuse;">
 #     Host
 #   </span>
 #   :

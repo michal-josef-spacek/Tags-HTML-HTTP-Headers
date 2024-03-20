@@ -89,12 +89,12 @@ Readonly::Hash our %TYPES => (
 	],
 );
 Readonly::Hash our %COLORS => (
-	'cache' => 'SandyBrown',
-	'client_info' => 'Fuchsia',
-	'connection' => 'charTReuse',
+	'cache' => 'sandybrown',
+	'client_info' => 'fuchsia',
+	'connection' => 'chartreuse',
 	'control' => 'turquoise',
 	'login' => 'indigo',
-	'negotiation' => 'Cyan',
+	'negotiation' => 'cyan',
 	'security' => 'darkgreen',
 );
 
@@ -358,7 +358,7 @@ Returns undef.
  # }
  # HTML
  # <div class="headers">
- #   <span style="color: charTReuse;">
+ #   <span style="color: chartreuse;">
  #     Host
  #   </span>
  #   :
