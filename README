@@ -5,7 +5,9 @@ SYNOPSIS
      use Tags::HTML::HTTP::Headers;
 
      my $obj = Tags::HTML::HTTP::Headers->new(%params);
-     $obj->process($stars_hr);
+     $obj->cleanup;
+     $obj->init($headers);
+     $obj->process;
      $obj->process_css;
 
 METHODS
@@ -22,47 +24,40 @@ METHODS
 
             Default value is undef.
 
-    *       "css_background_image"
-
-            CSS parameter for background-image of gradient.
-
-            Default value is 'linear-gradient(to right, red, orange, yellow,
-            green, blue, indigo, violet)'.
-
-    *       "css_gradient_class"
-
-            CSS class name for gradient.
-
-            Default value is 'gradient'.
-
-    *       "height"
-
-            Indicator height.
-
-            Default value is 30.
-
-    *       "unit"
-
-            Unit for height and width.
-
-            Default value is 'px'.
-
-    *       "width"
-
-            Indicator width.
-
-            Default value is 500.
-
     *       "tags"
 
             'Tags::Output' object.
 
             Default value is undef.
 
-  "process"
-     $obj->process($percent_value);
+    Returns instance of object.
 
-    Process Tags structure for gradient.
+  "cleanup"
+     $obj->cleanup;
+
+    Process cleanup after page run.
+
+    In this case cleanup internal representation of a set by init.
+
+    Returns undef.
+
+  "init"
+     $obj->init($headers);
+
+    Process initialization in page run.
+
+    Accepted $headers is HTTP::Headers object.
+
+    There is difference in "flatten()" method of HTTP::Headers and
+    "psgi_flatten()" method of HTTP::Headers::Fast. Second one is accepted
+    too.
+
+    Returns undef.
+
+  "process"
+     $obj->process;
+
+    Process Tags structure for HTTP headers.
 
     Returns undef.
 
@@ -80,11 +75,12 @@ ERRORS
              Parameter 'css' must be a 'CSS::Struct::Output::*' class.
              Parameter 'tags' must be a 'Tags::Output::*' class.
 
-EXAMPLE1
+EXAMPLE
      use strict;
      use warnings;
 
      use CSS::Struct::Output::Indent;
+     use HTTP::Headers;
      use Tags::HTML::HTTP::Headers;
      use Tags::Output::Indent;
 
@@ -96,9 +92,18 @@ EXAMPLE1
              'tags' => $tags,
      );
 
-     # Process indicator.
+     # Example Header.
+     my $headers = HTTP::Headers->new(
+             'Host' => 'example.com',
+             'Content-Type' => 'text/plain',
+     );
+
+     # Init.
+     $obj->init($headers);
+
+     # Process HTTP::Headers.
      $obj->process_css;
-     $obj->process(50);
+     $obj->process;
 
      # Print out.
      print "CSS\n";
@@ -108,59 +113,35 @@ EXAMPLE1
 
      # Output:
      # CSS
-     # .gradient {
-     #         height: 30px;
-     #         width: 500px;
-     #         background-color: red;
-     #         background-image: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
+     # .headers {
+     #         margin: 1em;
+     #         padding: 1em;
+     #         border-radius: 8px;
+     #         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+     #         background-color: #f4f4f4;
      # }
      # HTML
-     # <div style="width: 250px;overflow: hidden;">
-     #   <div class="gradient">
-     #   </div>
+     # <div class="headers">
+     #   <span style="color: charTReuse;">
+     #     Host
+     #   </span>
+     #   :
+     #   <span>
+     #     example.com
+     #   </span>
+     #   <br>
+     #   </br>
+     #   <span style="color: turquoise;">
+     #     Content-Type
+     #   </span>
+     #   :
+     #   <span>
+     #     text/plain
+     #   </span>
      # </div>
 
-EXAMPLE2
-     use strict;
-     use warnings;
-
-     use CSS::Struct::Output::Indent;
-     use Tags::HTML::HTTP::Headers;
-     use Tags::Output::Indent;
-
-     if (@ARGV < 1) {
-             print STDERR "Usage: $0 percent\n";
-             exit 1;
-     }
-     my $percent = $ARGV[0];
-
-     # Object.
-     my $css = CSS::Struct::Output::Indent->new;
-     my $tags = Tags::Output::Indent->new;
-     my $obj = Tags::HTML::HTTP::Headers->new(
-             'css' => $css,
-             'tags' => $tags,
-     );
-
-     # Process indicator.
-     $obj->process_css;
-     $obj->process($percent);
-
-     # Print out.
-     print "CSS\n";
-     print $css->flush."\n";
-     print "HTML\n";
-     print $tags->flush."\n";
-
-     # Output:
-     # TODO
-
 DEPENDENCIES
-    Class::Utils, Error::Pure.
-
-SEE ALSO
-    Tags::HTML::Stars
-        Tags helper for stars evaluation.
+    Class::Utils, Error::Pure. List::Util, Readonly, Scalar::Util.
 
 REPOSITORY
     <https://github.com/michal-josef-spacek/Tags-HTML-HTTP-Headers>
