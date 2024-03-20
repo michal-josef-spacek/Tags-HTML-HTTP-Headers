@@ -30,9 +30,6 @@ Readonly::Hash our %TYPES => (
 		'From',
 		'Referer',
 		'User-Agent',
-		'X-Forwarded-For',
-		'X-Forwarded-Host',
-		'X-Forwarded-Proto',
 		'X-Requested-With',
 	],
 	'connection' => [
@@ -67,7 +64,10 @@ Readonly::Hash our %TYPES => (
 		'Purpose',
 	],
 	'proxy' => [
+		'X-Forwarded-For',
+		'X-Forwarded-Host',
 		'X-Forwarded-Port',
+		'X-Forwarded-Proto',
 		'X-Forwarded-Ssl',
 		'X-Original-Uri',
 		'X-Real-Ip',
