@@ -164,30 +164,29 @@ sub _process {
 		['a', 'class', 'headers'],
 	);
 	my $headers_hr = $self->_headers;
-	my $num = 0;
 	foreach my $type (@TYPES) {
 		my $color = 'black';
 		if (exists $COLORS{$type}) {
 			$color = $COLORS{$type};
 		}
 		foreach my $header_ar (@{$headers_hr->{$type}}) {
-			if ($num) {
-				$self->{'tags'}->put(
-					['b', 'br'],
-					['e', 'br'],
-				);
-			}
 			$self->{'tags'}->put(
+				['b', 'div'],
+				['a', 'class', 'header-item'],
+
 				['b', 'span'],
+				['a', 'class', 'key'],
 				['a', 'style', 'color: '.$color.';'],
 				['d', $header_ar->[0]],
 				['e', 'span'],
 				['d', ':'],
 				['b', 'span'],
+				['a', 'class', 'value'],
 				['d', $header_ar->[1]],
 				['e', 'span'],
+
+				['e', 'div'],
 			);
-			$num = 1;
 		}
 	}
 	$self->{'tags'}->put(
@@ -207,6 +206,19 @@ sub _process_css {
 		['d', 'border-radius', '8px'],
 		['d', 'box-shadow', '0 2px 4px rgba(0, 0, 0, 0.1)'],
 		['d', 'background-color', '#f4f4f4'],
+		['e'],
+
+		['s', '.header-item'],
+		['d', 'margin-bottom', '0.5em'],
+		['e'],
+
+		['s', '.key'],
+		['d', 'font-weight', 'bold'],
+		['d', 'color', '#333'],
+		['e'],
+
+		['s', '.value'],
+		['d', 'margin-left', '0.5em'],
 		['e'],
 	);
 
