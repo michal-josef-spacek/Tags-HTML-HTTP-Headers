@@ -11,7 +11,7 @@ use Readonly;
 use Scalar::Util qw(blessed);
 
 Readonly::Array our @TYPES => ('cache', 'client_info', 'connection', 'control', 'login',
-	'negotiation', 'security', '');
+	'negotiation', 'proxy', 'security', '');
 Readonly::Hash our %TYPES => (
 	'cache' => [
 		'Cache-Control',
@@ -66,6 +66,12 @@ Readonly::Hash our %TYPES => (
 		'Accept-Encoding',
 		'Purpose',
 	],
+	'proxy' => [
+		'X-Forwarded-Port',
+		'X-Forwarded-Ssl',
+		'X-Original-Uri',
+		'X-Real-Ip',
+	],
 	'security' => [
 		'Content-Security-Policy',
 		'Cross-Origin-Embedder-Policy',
@@ -97,6 +103,7 @@ Readonly::Hash our %COLORS => (
 	'control' => 'turquoise',
 	'login' => 'indigo',
 	'negotiation' => 'darkturquoise',
+	'proxy' => 'lavender',
 	'security' => 'darkgreen',
 );
 
