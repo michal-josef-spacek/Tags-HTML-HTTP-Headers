@@ -94,7 +94,7 @@ Readonly::Hash our %COLORS => (
 	'connection' => 'chartreuse',
 	'control' => 'turquoise',
 	'login' => 'indigo',
-	'negotiation' => 'cyan',
+	'negotiation' => 'darkturquoise',
 	'security' => 'darkgreen',
 );
 
