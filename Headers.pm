@@ -11,7 +11,7 @@ use Readonly;
 use Scalar::Util qw(blessed);
 
 Readonly::Array our @TYPES => ('cache', 'client_info', 'connection', 'control', 'login',
-	'security', '');
+	'negotiation', 'security', '');
 Readonly::Hash our %TYPES => (
 	'cache' => [
 		'Cache-Control',
