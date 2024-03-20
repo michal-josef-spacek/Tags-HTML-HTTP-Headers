@@ -64,6 +64,7 @@ Readonly::Hash our %TYPES => (
 		'Accept',
 		'Accept-Language',
 		'Accept-Encoding',
+		'Purpose',
 	],
 	'security' => [
 		'Content-Security-Policy',
@@ -80,6 +81,7 @@ Readonly::Hash our %TYPES => (
 		'Sec-Fetch-Mode',
 		'Sec-Fetch-Site',
 		'Sec-Fetch-User',
+		'Sec-Purpose',
 		'Sec-WebSocket-Key',
 		'Strict-Transport-Security',
 		'Upgrade-Insecure-Requests',
