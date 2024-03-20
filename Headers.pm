@@ -324,6 +324,8 @@ Returns undef.
 
 =head1 EXAMPLE
 
+=for comment filename=create_headers_and_print.pl
+
  use strict;
  use warnings;
 
