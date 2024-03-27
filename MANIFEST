@@ -19,5 +19,6 @@ META.yml
 README
 t/Tags-HTML-HTTP-Headers/01-use.t
 t/Tags-HTML-HTTP-Headers/02-version.t
+t/Tags-HTML-HTTP-Headers/03-new.t
 xt/Tags-HTML-HTTP-Headers/01-pod_coverage.t
 xt/Tags-HTML-HTTP-Headers/02-pod.t
