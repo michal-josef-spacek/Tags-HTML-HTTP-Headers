@@ -21,7 +21,7 @@ recursive_author_tests('xt');
 requires 'Class::Utils' => 0.02;
 requires 'Error::Pure' => 0.07;
 requires 'Tags::HTML' => 0;
-requires 'List::Util' => 0;
+requires 'List::Util' => 1.33;
 requires 'Readonly' => 0;
 requires 'Scalar::Util' => 0;
 resources 'bugtracker' => 'https://github.com/michal-josef-spacek/Tags-HTML-HTTP-Headers/issues';

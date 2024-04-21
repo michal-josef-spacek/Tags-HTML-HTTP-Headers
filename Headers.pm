@@ -6,7 +6,7 @@ use warnings;
 
 use Class::Utils qw(set_params);
 use Error::Pure qw(err);
-use List::Util qw(any);
+use List::Util 1.33 qw(any);
 use Readonly;
 use Scalar::Util qw(blessed);
 
